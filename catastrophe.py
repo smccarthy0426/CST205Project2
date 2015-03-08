@@ -23,8 +23,23 @@ imagerect = myImage.get_rect()
 font = pygame.font.SysFont(None, 25)
 
 def enemy(enemy_x,enemy_y,block_size):
-    pygame.draw.rect(gameDisplay, pink, [enemy_x,enemy_y,block_size,block_size])
-    pygame.display.update()
+     pygame.draw.rect(gameDisplay, pink, [enemy_x,enemy_y,block_size,block_size])
+     pygame.display.update()
+
+def enemy_speed(difficulty):
+    speed = 10
+    if difficulty == 1:
+        speed = 5
+    elif difficulty == 2:
+        speed = 10
+    elif difficulty == 3:
+        speed = 15
+    elif difficulty == 4:
+        speed = 20
+    else:
+        speed = 25
+    return speed
+        
 def message_to_screen(msg,color):
     screen_text = font.render(msg, True, color)
     gameDisplay.blit(screen_text, [250, 250])
@@ -41,13 +56,10 @@ def gameLoop():
     block_size = 15
     enemy_x = display_w - block_size
     enemy_y = round(randint(0,display_h - block_size)/10.0)*10.0
-    enemy_x_change = 10
     cat_x = 10
     cat_y = 150
-    lives = 3
     gameOver = False
-    difficulty = 3
-    counter = 0
+    difficulty = 1
     while not gameEnd:
 
         while gameOver == True:
@@ -73,7 +85,9 @@ def gameLoop():
             gameOver = True
 
 
-            
+
+        enemy_x_change = enemy_speed(difficulty)
+        
         enemy_x -= enemy_x_change
 
 
@@ -85,11 +99,7 @@ def gameLoop():
         gameDisplay.blit(myImage,(cat_x, cat_y))
         pygame.display.update()
 
-        if abs(cat_x - enemy_x) <= 10 and abs(cat_y - enemy_y) <= 10:
-            lives -= 1
             
-        if lives == 0:
-            gameOver = True
 
         if enemy_x <= 0:
             enemy_x = display_w - block_size
