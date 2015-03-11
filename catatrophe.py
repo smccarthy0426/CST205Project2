@@ -178,6 +178,7 @@ def gameLoop():
                 while not gameEnd:
                     score += 10
                     while gameOver == True:
+                        pygame.mixer.music.pause()
                         background = pygame.Surface(screen.get_size())
                         background = pygame.image.load('maingamebackgroundimage.jpg').convert()
                         pygame.display.set_mode([pygame.Surface.get_width(pygame.image.load('backgroundimage.jpg').convert()),pygame.Surface.get_height(pygame.image.load('backgroundimage.jpg').convert())])
@@ -222,6 +223,8 @@ def gameLoop():
                         for event in pygame.event.get():
                             if event.type == pygame.KEYDOWN:
                                 if event.key == pygame.K_c:
+                                    pygame.mixer.music.rewind()
+                                    pygame.mixer.music.unpause()
                                     gameLoop()
                             if (pygame.key.get_pressed()[pygame.K_ESCAPE] != 0):
                                 pygame.quit()
