@@ -18,6 +18,8 @@ orange = (255,102,0)
 purple = (160,32,240)
 red = (255,0,0)
 
+
+
 display_w = 800
 display_h = 450
 gameDisplay = pygame.display.set_mode((display_w,display_h))
@@ -47,9 +49,9 @@ def startup():
 
     #Start Screen
     font = pygame.font.SysFont("helvetica", 36)
-    text = font.render("CATATSTROPHE", 1, (1, 1, 1))
-    text2 = font.render("Press Enter to start", 1, (1, 1, 1))
-    text3 = font.render("Press Esc to quit", 1, (1, 1, 1))
+    text = font.render("CATATSTROPHE", 1, (255, 255, 255))
+    text2 = font.render("Press Enter to start", 1, (255, 255, 255))
+    text3 = font.render("Press Esc to quit", 1, (255, 255, 255))
     textpos = text.get_rect()
     textpos.centerx = background.get_rect().centerx
     background.blit(text, textpos)
@@ -75,7 +77,7 @@ def music_select_screen():
             
     #Music Select Screen
     font = pygame.font.SysFont("helvetica", 32)
-    text = font.render("Select Music", 1, (1, 1, 1))
+    text = font.render("Select Music", 1, (255, 255, 255))
     textpos = text.get_rect()
     textpos.centerx = background.get_rect().centerx
     background.blit(text, textpos) 
@@ -107,7 +109,7 @@ def countdown():
             pygame.display.set_mode([pygame.Surface.get_width(pygame.image.load('backgroundimage.jpg').convert()),pygame.Surface.get_height(pygame.image.load('backgroundimage.jpg').convert())])
             
             font = pygame.font.SysFont("helvetica", 56)
-            text = font.render(str(countdown), 1, (1, 1, 1))
+            text = font.render(str(countdown), 1, (255, 255, 255))
             textpos = text.get_rect()
             textpos.centerx = background.get_rect().centerx
             background.blit(text, textpos) 
@@ -129,7 +131,7 @@ def countdown():
         pygame.display.set_mode([pygame.Surface.get_width(pygame.image.load('backgroundimage.jpg').convert()),pygame.Surface.get_height(pygame.image.load('backgroundimage.jpg').convert())])
         
         font = pygame.font.SysFont("helvetica", 56)
-        text = font.render("GO!", 1, (1, 1, 1))
+        text = font.render("GO!", 1, (255, 255, 255))
         textpos = text.get_rect()
         textpos.centerx = background.get_rect().centerx
         background.blit(text, textpos) 
@@ -143,41 +145,7 @@ def countdown():
         pygame.mixer.music.play(-1, 0.0)
         musicPlaying = True
         
-#Show score function/Game over
-def show_score():
-            background = pygame.Surface(screen.get_size())
-            background = pygame.image.load('maingamebackgroundimage.jpg').convert()
-            pygame.display.set_mode([pygame.Surface.get_width(pygame.image.load('backgroundimage.jpg').convert()),pygame.Surface.get_height(pygame.image.load('backgroundimage.jpg').convert())])
 
-        
-            screen.blit(background, (0, 0))
-            pygame.display.flip()
-            font = pygame.font.SysFont("helvetica", 56)
-            text = font.render("GAME OVER", 1, (1, 1, 1))
-            textpos = text.get_rect()
-            textpos.centerx = background.get_rect().centerx
-            background.blit(text, textpos) 
-    
-            screen.blit(background, (0, 0))
-            pygame.display.flip()
-            background.fill((255,255,255))
-            pygame.time.wait(300)
-
-            
-            font = pygame.font.SysFont("helvetica", 56)
-            text = font.render("Score :", 1, (1, 1, 1))
-            textpos = text.get_rect()
-            textpos.centerx = background.get_rect().centerx - 100
-            background.blit(text, textpos)
-            font = pygame.font.SysFont("helvetica", 56)
-            text2 = font.render(score, 1, (1, 1, 1))
-            textpos2 = text.get_rect()
-            textpos2.centerx = background.get_rect().centerx +100
-            background.blit(text2, textpos2)
-            screen.blit(background, (0, 0))
-            pygame.display.flip()
-            background.fill((255,255,255))
-            
 def gameLoop():
                 background = pygame.Surface(screen.get_size())
                 background = pygame.image.load('maingamebackgroundimage.jpg').convert()
@@ -200,34 +168,35 @@ def gameLoop():
                 enemy5_y = round(randint(361,450)/10.0)*10.0
                 cat_x = 10
                 cat_y = 160
+                score = 0
                 gameOver = False
                 difficulty = 5
                 while not gameEnd:
-
+                    score += 1
                     while gameOver == True:
                         background = pygame.Surface(screen.get_size())
                         background = pygame.image.load('maingamebackgroundimage.jpg').convert()
                         pygame.display.set_mode([pygame.Surface.get_width(pygame.image.load('backgroundimage.jpg').convert()),pygame.Surface.get_height(pygame.image.load('backgroundimage.jpg').convert())])
                         screen.blit(background, (0, 0))
                         font = pygame.font.SysFont("helvetica", 56)
-                        text = font.render("GAME OVER", 1, (1, 1, 1))
+                        text = font.render("GAME OVER", 1, (255, 255, 255))
                         textpos = text.get_rect()
                         textpos.centerx = background.get_rect().centerx
                         background.blit(text, textpos)
                         font = pygame.font.SysFont("helvetica", 36)
-                        text2 = font.render("Press C to continue.", 1, (1, 1, 1))
+                        text2 = font.render("Press C to continue.", 1, (255, 255, 255))
                         textpos2 = text.get_rect()
                         textpos2.centery = background.get_rect().centery + 55
                         textpos2.centerx = background.get_rect().centerx
                         background.blit(text2, textpos2)
                         font = pygame.font.SysFont("helvetica", 36)
-                        text3 = font.render("Press ESC to quit.", 1, (1, 1, 1))
+                        text3 = font.render("Press ESC to quit.", 1, (255, 255, 255))
                         textpos3 = text.get_rect()
                         textpos3.centery = background.get_rect().centery +25
                         textpos3.centerx = background.get_rect().centerx
                         background.blit(text3, textpos3)
                         font = pygame.font.SysFont("helvetica", 36)
-                        text4 = font.render("Press M to return to the main menu.", 1, (1, 1, 1))
+                        text4 = font.render("Press M to return to the main menu.", 1, (255, 255, 255))
                         textpos4 = text.get_rect()
                         textpos4.centery = background.get_rect().centery -5
                         textpos4.centerx = background.get_rect().centerx
@@ -261,11 +230,11 @@ def gameLoop():
                             cat_y = 420
                         elif cat_y <= 0:
                             cat_y = 0
-                            #gameOver = True
-
+                            
+                        
 
                     #use the speed function to set the constant change of the enemies
-                    enemy1_x_change = enemy_speed(difficulty) +20
+                    enemy1_x_change = enemy_speed(difficulty) +15
                     enemy2_x_change = enemy_speed(difficulty) +10
                     enemy3_x_change = enemy_speed(difficulty) 
                     enemy4_x_change = enemy_speed(difficulty) -5
@@ -282,10 +251,22 @@ def gameLoop():
                     background = pygame.image.load('maingamebackgroundimage.jpg').convert()
                     pygame.display.set_mode([pygame.Surface.get_width(pygame.image.load('backgroundimage.jpg').convert()),pygame.Surface.get_height(pygame.image.load('backgroundimage.jpg').convert())])
                     screen.blit(background, (0, 0))
-                    #gameDisplay.fill(white)
-                    gameDisplay.blit(myImage,(cat_x, cat_y))
                     
+                    gameDisplay.blit(myImage,(cat_x, cat_y))
 
+                    #Write Score to screen
+                   
+                    font = pygame.font.SysFont("helvetica", 25)
+                    text = font.render("Score :", 1, (255, 255, 255))
+                    textpos = text.get_rect()
+                    textpos.centerx = background.get_rect().centerx - 100
+                    gameDisplay.blit(text, textpos)
+                    font = pygame.font.SysFont("helvetica", 25)
+                    text2 = font.render(str(score), 1, (255, 255, 255))
+                    textpos2 = text.get_rect()
+                    textpos2.centerx = background.get_rect().centerx +100
+                    gameDisplay.blit(text2, textpos2)
+                    
                     #Call the enemy functions to draw the enemies
                     enemy1(enemy1_x,enemy1_y,block_size)
                     enemy2(enemy2_x,enemy2_y,block_size)
@@ -335,6 +316,9 @@ def gameLoop():
                         enemy5_x = display_w - block_size
                         enemy5_y = round(randint(0,display_h - block_size)/10.0)*10.0
 
+                   
+                    
+                    
                     pygame.display.update()
                     clock.tick(30)
                     
@@ -366,13 +350,13 @@ def enemy_speed(difficulty):
     if difficulty == 1:
         speed = 10
     elif difficulty == 2:
-        speed = 25
+        speed = 20
     elif difficulty == 3:
-        speed = 40
+        speed = 30
     elif difficulty == 4:
-        speed = 55
+        speed = 40
     else:
-        speed = 70
+        speed = 50
     return speed
         
 def message_to_screen(msg,color):
