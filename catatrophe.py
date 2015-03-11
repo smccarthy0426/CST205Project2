@@ -364,15 +364,15 @@ def enemy5(enemy5_x,enemy5_y,block_size):
 def enemy_speed(difficulty):
     speed = 10
     if difficulty == 1:
-        speed = 5
-    elif difficulty == 2:
         speed = 10
-    elif difficulty == 3:
-        speed = 15
-    elif difficulty == 4:
-        speed = 20
-    else:
+    elif difficulty == 2:
         speed = 25
+    elif difficulty == 3:
+        speed = 40
+    elif difficulty == 4:
+        speed = 55
+    else:
+        speed = 70
     return speed
         
 def message_to_screen(msg,color):
