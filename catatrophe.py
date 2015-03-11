@@ -265,7 +265,7 @@ def gameLoop():
 
 
                     #use the speed function to set the constant change of the enemies
-                    enemy1_x_change = enemy_speed(difficulty) +15
+                    enemy1_x_change = enemy_speed(difficulty) +20
                     enemy2_x_change = enemy_speed(difficulty) +10
                     enemy3_x_change = enemy_speed(difficulty) 
                     enemy4_x_change = enemy_speed(difficulty) -5
