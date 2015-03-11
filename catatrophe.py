@@ -52,6 +52,7 @@ def startup():
     text = font.render("CATATSTROPHE", 1, (255, 255, 255))
     text2 = font.render("Press Enter to start", 1, (255, 255, 255))
     text3 = font.render("Press Esc to quit", 1, (255, 255, 255))
+    text4 = font.render("Created by Sean McCarthy and Nicholas Drinovsky", 1, (255, 255, 255))
     textpos = text.get_rect()
     textpos.centerx = background.get_rect().centerx
     background.blit(text, textpos)
@@ -63,6 +64,9 @@ def startup():
     textpos3.centery = background.get_rect().centery +90
     textpos3.centerx = background.get_rect().centerx
     background.blit(text3,textpos3)
+    font = pygame.font.SysFont("helvetica", 18)
+    text4 = font.render("Created by Sean McCarthy and Nicholas Drinovsky", 1, (255, 255, 255))
+    background.blit(text4,(10, 400))
     
     # Blit everything to the screen
     screen.blit(background, (0, 0))
@@ -172,7 +176,7 @@ def gameLoop():
                 gameOver = False
                 difficulty = 5
                 while not gameEnd:
-                    score += 1
+                    score += 10
                     while gameOver == True:
                         background = pygame.Surface(screen.get_size())
                         background = pygame.image.load('maingamebackgroundimage.jpg').convert()
@@ -183,6 +187,15 @@ def gameLoop():
                         textpos = text.get_rect()
                         textpos.centerx = background.get_rect().centerx
                         background.blit(text, textpos)
+
+                        totalscore = "Score : %d" %score
+                        font = pygame.font.SysFont("helvetica", 36)
+                        text5 = font.render(totalscore, 1, (255, 255, 255))
+                        textpos5 = text.get_rect()
+                        textpos5.centery = background.get_rect().centery - 50
+                        textpos5.centerx = background.get_rect().centerx
+                        background.blit(text5, textpos5)
+                        
                         font = pygame.font.SysFont("helvetica", 36)
                         text2 = font.render("Press C to continue.", 1, (255, 255, 255))
                         textpos2 = text.get_rect()
