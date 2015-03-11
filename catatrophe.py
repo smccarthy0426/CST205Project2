@@ -95,12 +95,12 @@ def music_select():
     #Set up music
     pickUpSound = pygame.mixer.Sound(backgroundMusic)
     pygame.mixer.music.load(backgroundMusic)
-    pygame.mixer.music.play(-1, 0.0)
-    musicPlaying = True
-
     
-    if (musicPlaying == 1):
-        countdown = 5
+
+#Countdown Function 
+def countdown():
+    countdown = 5
+    if (countdown ==5):
         while (countdown > 0):
             background = pygame.Surface(screen.get_size())
             background = pygame.image.load('maingamebackgroundimage.jpg').convert()
@@ -140,6 +140,8 @@ def music_select():
         gameDisplay.blit(myImage,(cat_x, cat_y))
         pygame.display.flip()
         pygame.time.wait(1000)
+        pygame.mixer.music.play(-1, 0.0)
+        musicPlaying = True
         
 #Show score function/Game over
 def show_score():
@@ -392,7 +394,8 @@ def main():
             if (pygame.key.get_pressed()[pygame.K_RETURN] != 0):
                 #Music Select Function
                 music_select_screen()
-
+                #Countdown Function
+                countdown()
                 #Game Start
                 gameLoop()
                 
