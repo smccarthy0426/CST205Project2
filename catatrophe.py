@@ -265,7 +265,7 @@ def gameLoop():
 
 
                     #use the speed function to set the constant change of the enemies
-                    enemy1_x_change = enemy_speed(difficulty) +20
+                    enemy1_x_change = enemy_speed(difficulty) +15
                     enemy2_x_change = enemy_speed(difficulty) +10
                     enemy3_x_change = enemy_speed(difficulty) 
                     enemy4_x_change = enemy_speed(difficulty) -5
@@ -299,7 +299,7 @@ def gameLoop():
                     pygame.display.update()
                     
                     #If the main character and the enemies touch, the game will end 
-                    if abs(cat_y - enemy1_y) <= 25 and abs(cat_x - enemy1_x) <= 15:
+                    if abs(cat_y - enemy1_y) <= 25 and abs(cat_x - enemy1_x) <= 25:
                         gameOver = True
 
                     elif abs(cat_y - enemy2_y) <= 25 and abs(cat_x - enemy2_x) <= 25:
