@@ -176,7 +176,7 @@ def gameLoop():
                 gameOver = False
                 difficulty = 5
                 while not gameEnd:
-                    score += 10
+                    
                     while gameOver == True:
                         pygame.mixer.music.pause()
                         background = pygame.Surface(screen.get_size())
@@ -313,22 +313,27 @@ def gameLoop():
 
                     #Give the enemies a new starting position after the enemies pass the cat
                     if enemy1_x <= 0:
+                        score += 1
                         enemy1_x = display_w - block_size
                         enemy1_y = round(randint(0,display_h - block_size)/10.0)*10.0
                 
                     if enemy2_x <= 0:
+                        score += 1
                         enemy2_x = display_w - block_size
                         enemy2_y = round(randint(0,display_h - block_size)/10.0)*10.0
                 
                     if enemy3_x <= 0:
+                        score += 1
                         enemy3_x = display_w - block_size
                         enemy3_y = round(randint(0,display_h - block_size)/10.0)*10.0
 
                     if enemy4_x <= 0:
+                        score += 1
                         enemy4_x = display_w - block_size
                         enemy4_y = round(randint(0,display_h - block_size)/10.0)*10.0
 
                     if enemy5_x <= 0:
+                        score += 1
                         enemy5_x = display_w - block_size
                         enemy5_y = round(randint(0,display_h - block_size)/10.0)*10.0
 
