@@ -1,6 +1,7 @@
 import pygame, sys, time
 from pygame.locals import *
 import Tkinter
+from Tkinter import *
 import tkFileDialog
 import tkFont
 from random import randint
@@ -10,6 +11,7 @@ from random import randint
 
 pygame.init()
 
+#Color shortcut variables
 white = (255,255,255)
 pink = (255, 20, 147)
 green = (0,155,0)
@@ -20,15 +22,18 @@ purple = (160,32,240)
 red = (255,0,0)
 
 
-
+#Setting window size
 display_w = 800
 display_h = 450
 gameDisplay = pygame.display.set_mode((display_w,display_h))
 
 screen = pygame.display.set_mode((800, 450))
 
+#setting caption and icon
 pygame.display.update()
 pygame.display.set_caption('Catatstrophe')
+myicon = pygame.image.load('gameicon.png')
+pygame.display.set_icon(myicon)
 
 
 myImage = pygame.image.load("nyan3.png")
@@ -108,6 +113,7 @@ def music_select():
 def countdown():
     countdown = 5
     if (countdown ==5):
+        #Loops the screen to countdown from 5 to 1
         while (countdown > 0):
             background = pygame.Surface(screen.get_size())
             background = pygame.image.load('maingamebackgroundimage.jpg').convert()
@@ -131,6 +137,7 @@ def countdown():
             
             countdown -= 1
 
+        #Displays "Go!" before the game loop
         background = pygame.Surface(screen.get_size())
         background = pygame.image.load('maingamebackgroundimage.jpg').convert()
         pygame.display.set_mode([pygame.Surface.get_width(pygame.image.load('backgroundimage.jpg').convert()),pygame.Surface.get_height(pygame.image.load('backgroundimage.jpg').convert())])
@@ -152,13 +159,14 @@ def countdown():
         
 
 def gameLoop():
+                #Setting the background up
                 background = pygame.Surface(screen.get_size())
                 background = pygame.image.load('maingamebackgroundimage.jpg').convert()
                 pygame.display.set_mode([pygame.Surface.get_width(pygame.image.load('backgroundimage.jpg').convert()),pygame.Surface.get_height(pygame.image.load('backgroundimage.jpg').convert())])
-
-        
                 screen.blit(background, (0, 0))
                 pygame.display.flip()
+
+                #Setting the enemy and player starting positions
                 gameEnd = False
                 block_size = 15
                 enemy1_x = display_w - block_size
@@ -176,16 +184,20 @@ def gameLoop():
                 score = 0
                 gameOver = False
                 difficulty = 5
+
+                #Game Loop
                 while not gameEnd:
-                    
+
+                    #After losing
                     while gameOver == True:
 
+                        #Writing high score to the text file
                         s = open('scores.txt', 'r')
                         highscore = int(s.readline())
                         if score > highscore:
                             s = open('scores.txt', 'w')
                             s.write(str(score))
-                        
+                        #Printing highscore, score, and game over menu to screen
                         pygame.mixer.music.pause()
                         background = pygame.Surface(screen.get_size())
                         background = pygame.image.load('maingamebackgroundimage.jpg').convert()
@@ -236,6 +248,7 @@ def gameLoop():
                         background.fill((255,255,255))
                         pygame.display.update()
 
+                        #User input during game over screen
                         for event in pygame.event.get():
                             if event.type == pygame.KEYDOWN:
                                 if event.key == pygame.K_c:
