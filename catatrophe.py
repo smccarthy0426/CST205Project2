@@ -5,6 +5,7 @@ import tkFileDialog
 import tkFont
 from random import randint
 
+    
 #Startup
 
 pygame.init()
@@ -178,6 +179,13 @@ def gameLoop():
                 while not gameEnd:
                     
                     while gameOver == True:
+
+                        s = open('scores.txt', 'r')
+                        highscore = int(s.readline())
+                        if score > highscore:
+                            s = open('scores.txt', 'w')
+                            s.write(str(score))
+                        
                         pygame.mixer.music.pause()
                         background = pygame.Surface(screen.get_size())
                         background = pygame.image.load('maingamebackgroundimage.jpg').convert()
@@ -189,30 +197,38 @@ def gameLoop():
                         textpos.centerx = background.get_rect().centerx
                         background.blit(text, textpos)
 
-                        totalscore = "Score : %d" %score
+                        totalhighscore = "High Score: %d" %highscore
+                        font = pygame.font.SysFont("helvetica", 36)
+                        text6 = font.render(totalhighscore, 1, (255, 255, 255))
+                        textpos6 = text.get_rect()
+                        textpos6.centery = background.get_rect().centery - 30
+                        textpos6.centerx = background.get_rect().centerx
+                        background.blit(text6, textpos6)
+
+                        totalscore = "Your Score: %d" %score
                         font = pygame.font.SysFont("helvetica", 36)
                         text5 = font.render(totalscore, 1, (255, 255, 255))
                         textpos5 = text.get_rect()
-                        textpos5.centery = background.get_rect().centery - 50
+                        textpos5.centery = background.get_rect().centery - 60
                         textpos5.centerx = background.get_rect().centerx
                         background.blit(text5, textpos5)
                         
-                        font = pygame.font.SysFont("helvetica", 36)
+                        font = pygame.font.SysFont("helvetica", 30)
                         text2 = font.render("Press C to continue.", 1, (255, 255, 255))
                         textpos2 = text.get_rect()
-                        textpos2.centery = background.get_rect().centery + 55
+                        textpos2.centery = background.get_rect().centery + 100
                         textpos2.centerx = background.get_rect().centerx
                         background.blit(text2, textpos2)
-                        font = pygame.font.SysFont("helvetica", 36)
+                        font = pygame.font.SysFont("helvetica", 30)
                         text3 = font.render("Press ESC to quit.", 1, (255, 255, 255))
                         textpos3 = text.get_rect()
-                        textpos3.centery = background.get_rect().centery +25
+                        textpos3.centery = background.get_rect().centery +75
                         textpos3.centerx = background.get_rect().centerx
                         background.blit(text3, textpos3)
-                        font = pygame.font.SysFont("helvetica", 36)
+                        font = pygame.font.SysFont("helvetica", 30)
                         text4 = font.render("Press M to return to the main menu.", 1, (255, 255, 255))
                         textpos4 = text.get_rect()
-                        textpos4.centery = background.get_rect().centery -5
+                        textpos4.centery = background.get_rect().centery +50
                         textpos4.centerx = background.get_rect().centerx
                         background.blit(text4, textpos4)
                         screen.blit(background, (0, 0))
