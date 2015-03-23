@@ -185,7 +185,7 @@ def gameLoop():
                 cat_x = 10
                 cat_y = 160
                 score = 0
-                vol = .1
+                vol = .15
                 gameOver = False
                 #Game Loop
                 while not gameEnd:
