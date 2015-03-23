@@ -412,8 +412,7 @@ def enemy_speed(vol):
     return speed
 
 def volume_change(score,vol):
-    if score % 30 == 0:
-        vol = vol + .20
+    vol = vol + .005
     return vol
          
         
