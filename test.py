@@ -415,6 +415,7 @@ def volume_change(score,vol):
     if score % 30 == 0:
         vol = vol + .20
     return vol
+    print vol
          
         
 def message_to_screen(msg,color):
@@ -457,4 +458,3 @@ def main():
 
     
 if __name__ == '__main__': main()
-
