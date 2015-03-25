@@ -121,9 +121,6 @@ def music_select_screen():
 def music_setup():
     pygame.mixer.music.load('Lazy.mp3')
     pygame.mixer.music.queue('Peace.mp3')
-    pygame.mixer.music.queue('War.mp3')
-    pygame.mixer.music.queue('Laser.mp3')
-    
 
 #Countdown Function 
 def countdown():
@@ -181,9 +178,7 @@ def gameLoop():
                 screen.blit(background, (0, 0))
                 pygame.display.flip()
 
-                #Starting music
-                pygame.mixer.music.play(0, 0.0)
-                musicPlaying = True
+                
                 
                 #Setting the enemy and player starting positions
                 gameEnd = False
@@ -203,7 +198,12 @@ def gameLoop():
                 score = 0
                 vol = .15
                 gameOver = False
-                difficulty = 5
+                
+                #Starting music
+                pygame.mixer.music.play(-1, 0.0)
+                pygame.mixer.music.set_volume(vol)
+                musicPlaying = True
+                
 
                 #Game Loop
                 while not gameEnd:
@@ -388,6 +388,7 @@ def gameLoop():
                    
                     
                     vol = volume_change(score,vol)
+                    pygame.mixer.music.set_volume(vol)
                     pygame.display.update()
                     clock.tick(30)
                     
@@ -429,7 +430,7 @@ def enemy_speed(vol):
     return speed
 
 def volume_change(score,vol):
-    vol = vol + .005
+    vol = vol + .00099
     return vol
 
 def main():
