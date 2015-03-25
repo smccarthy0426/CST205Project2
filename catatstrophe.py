@@ -120,7 +120,7 @@ def music_select_screen():
 #Music Select Screen
 def music_setup():
     pygame.mixer.music.load('Lazy.mp3')
-    pygame.mixer.music.queue('Peace.mp3')
+
 
     
 
@@ -210,11 +210,10 @@ def gameLoop():
                 while not gameEnd:
 
 
-                    #Loads, queues, and plays 2 more tracks after the first two end
-                    #These songs will repeat after loading.
+                    #Loads, queues, and plays another track after the first ends
+                    #This song will repeat after loading.
                     if pygame.mixer.music.get_busy() == False:
-                        pygame.mixer.music.load('War.mp3')
-                        pygame.mixer.music.queue('Laser.mp3')
+                        pygame.mixer.music.load('Laser.mp3')
                         pygame.mixer.music.play(0, 0.0)
                     #After losing
                     while gameOver == True:
